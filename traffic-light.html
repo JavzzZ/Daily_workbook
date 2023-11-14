@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>红绿灯</title>
+    <style>
+        #content {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 绿灯 3s，黄灯 1s，红灯 2s -->
+    <div id="content" />
+
+    <script>
+        let runTime = 0;
+        const box = document.getElementById("content");
+
+        setInterval(function () {
+            runTime += 1;
+
+            if (runTime <= 3) {
+                box.style.backgroundColor = 'green';
+            } else if (runTime <= 4) {
+                box.style.backgroundColor = 'yellow';
+            } else if (runTime < 6) {
+                box.style.backgroundColor = 'red';
+            } else {
+                runTime = 0;
+            }
+        }, 1000)
+    </script>
+</body>
+
+</html>

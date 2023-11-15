@@ -20,22 +20,49 @@
     <div id="content" />
 
     <script>
-        let runTime = 0;
-        const box = document.getElementById("content");
+        /**
+         * 解法一 setInterval
+        */
+        // let runTime = 0;
+        // const box = document.getElementById("content");
 
-        setInterval(function () {
-            runTime += 1;
+        // setInterval(function () {
+        //     runTime += 1;
 
-            if (runTime <= 3) {
-                box.style.backgroundColor = 'green';
-            } else if (runTime <= 4) {
-                box.style.backgroundColor = 'yellow';
-            } else if (runTime < 6) {
-                box.style.backgroundColor = 'red';
-            } else {
-                runTime = 0;
+        //     if (runTime <= 3) {
+        //         box.style.backgroundColor = 'green';
+        //     } else if (runTime <= 4) {
+        //         box.style.backgroundColor = 'yellow';
+        //     } else if (runTime < 6) {
+        //         box.style.backgroundColor = 'red';
+        //     } else {
+        //         runTime = 0;
+        //     }
+        // }, 1000)
+
+        /**
+         * 解法二 setTimeout, Promise
+        */
+        function sleep(duration) {
+            return new Promise((resolve) => {
+                setTimeout(resolve, duration);
+            })
+        }
+
+        async function trafficLight(duration, color) {
+            document.getElementById('content').style.backgroundColor = color;
+            await sleep(duration);
+        }
+
+        async function run() {
+            while(true) {
+                await trafficLight(3000, 'green');
+                await trafficLight(1000, 'yellow');
+                await trafficLight(2000, 'red');
             }
-        }, 1000)
+        }
+
+        run()
     </script>
 </body>
 

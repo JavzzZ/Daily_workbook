@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: grid;
+            grid-template-areas:
+            "header header header"
+            "navigation navigation navigation"
+            ". . ."
+            ". content .";
+            grid-template-columns: 1fr minmax(0, 720px) 1fr;
+            grid-template-rows: 60px 48px 10px 1fr;
+            column-gap: 10px;
+            height: 100vh;
+        }
+
+        .header {
+            grid-area: header;
+            background-color: #039BE5;
+        }
+
+        .navigation {
+            grid-area: navigation;
+            background-color: #4FC3F7;
+        }
+
+        .content {
+            grid-area: content;
+            background-color: #99CCFF;
+        }
+
+        .right {
+            display: none;
+            background-color: #6699CC;
+        }
+
+        @media (min-width: 1000px) {
+            body {
+                grid-template-areas:
+                  "header header header header"
+                  "navigation navigation navigation navigation"
+                  ". . . ."
+                  ". content right .";
+                grid-template-columns: 1fr minmax(0, 720px) 260px 1fr;
+            }
+
+            .right {
+                grid-area: right;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 24px;
+            }
+        }
+
+        @media (min-width: 1220px) {
+            body {
+                grid-template-areas:
+                  "header header header header header"
+                  ". . . . ."
+                  ". navigation content right .";
+                grid-template-columns: 1fr 180px minmax(0, 720px) 260px 1fr;
+                grid-template-rows: 60px 10px 1fr;
+            }
+        }
+
+        .header,
+        .navigation,
+        .content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="header">Header</div>
+<div class="navigation">Navigation</div>
+<div class="content">Content</div>
+<div class="right">Right</div>
+</body>
+</html>
